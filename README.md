@@ -1,6 +1,8 @@
 # react-clamp-lines
 Responsive clamping component with _&laquo;Read more&raquo;_/_&laquo;Read less&raquo;_ buttons built for [React](http://facebook.github.io/react/).
 
+[**DEMO**](https://zoltantothcom.github.io/react-clamp-lines/)
+
 ## install
 `npm install --save react-clamp-lines`
 
