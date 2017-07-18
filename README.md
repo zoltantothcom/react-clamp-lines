@@ -3,7 +3,7 @@ Responsive clamping component with _&laquo;Read more&raquo;_/_&laquo;Read less&r
 
 [**DEMO**](https://zoltantothcom.github.io/react-clamp-lines/)
 
-![react-clamp-lines](react-clamp.png "react-clamp-lines")
+![react-clamp-lines](https://raw.githubusercontent.com/zoltantothcom/react-clamp-lines/npm/react-clamp.png "react-clamp-lines")
 
 ## install
 `npm install --save react-clamp-lines`
