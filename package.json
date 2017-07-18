@@ -1,16 +1,24 @@
 {
-  "name": "react-clamp-line",
+  "name": "react-clamp-lines",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-scripts": "1.0.10"
+  "description": "Responsive clamping component with Read more/Read less buttons built for React.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zoltantothcom/react-clamp-lines.git"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+  "author": "Zoltan Toth",
+  "license": "Unlicense",
+  "keywords": [
+    "clamp",
+    "clamping",
+    "react clamp",
+    "clamp lines",
+    "react clamp lines",
+    "react clamping component"
+  ],
+  "bugs": {
+    "url": "https://github.com/zoltantothcom/react-clamp-lines/issues"
+  },
+  "homepage": "https://zoltantothcom.github.io/react-clamp-lines"
 }
