@@ -69,8 +69,8 @@ text | {String} |  | Text you wish to clamp
 lines | {Number} | `3` | Number of visible lines
 ellipsis | {String} | `...` | Text content for the ellipsis - will appear after the clamped lines
 buttons | {Boolean} | `true` | The  _&laquo;Read more&raquo;_ and  _&laquo;Read less&raquo;_ buttons
-moreText | {String} | `Read more` |  _&laquo;Read more&raquo;_ button value
-lessText | {String} | `Read less` |  _&laquo;Read less&raquo;_ button value
+moreText | {String} | <nobr>`Read more`</nobr> |  _&laquo;Read more&raquo;_ button value
+lessText | {String} | <nobr>`Read less`</nobr> |  _&laquo;Read less&raquo;_ button value
 className | {String} |   | CSS class names added to component
 debounce | {Number} | `300` | Milliseconds, the function is waiting before being triggered, after it stops being called
 
