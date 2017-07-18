@@ -63,8 +63,8 @@ List of all available props with their default values and description.
     debounce={Number} />
 ```
 
-prop | type | default | description |
------|------|---------|-------------|
+prop | type | default&#160;value | description |
+-----|------|--------------------|-------------|
 text | {String} |  | Text you wish to clamp
 lines | {Number} | `3` | Number of visible lines
 ellipsis | {String} | `...` | Text content for the ellipsis - will appear after the clamped lines
