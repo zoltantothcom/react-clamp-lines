@@ -1,14 +1,15 @@
 # react-clamp-lines
 Responsive clamping component with _&laquo;Read more&raquo;_/_&laquo;Read less&raquo;_ buttons built for [React](http://facebook.github.io/react/).
 
-[**DEMO**](https://zoltantothcom.github.io/react-clamp-lines/)
-
 ![react-clamp-lines](img/react-clamp.png "react-clamp-lines")
 
-## install
+## Demo
+[**React Clamp Lines**](https://zoltantothcom.github.io/react-clamp-lines/)
+
+## Install
 `npm install --save react-clamp-lines`
 
-## features
+## Features
  - built for `React` with no dependencies
  - option for _&laquo;Read more&raquo;_ and  _&laquo;Read less&raquo;_ buttons
  - customizable ellipsis text
@@ -17,7 +18,7 @@ Responsive clamping component with _&laquo;Read more&raquo;_/_&laquo;Read less&r
  - window resize event `debounced` &mdash; and [why it's important](https://davidwalsh.name/javascript-debounce-function)
 >  If your web app uses JavaScript to accomplish taxing tasks, a **debounce** function is essential to ensuring a given task doesn't fire so often that it bricks browser performance.
 
-## usage
+## Usage
 ```js
 import React, { Component } from 'react';
 import React-DOM from 'react-dom';
@@ -74,7 +75,7 @@ lessText | {String} | `Read less` |  _&laquo;Read less&raquo;_ button value
 className | {String} |   | CSS class names added to component
 debounce | {Number} | `300` | Milliseconds, the function is waiting before being triggered, after it stops being called
 
-## run the example
+## Run the example
 ```bash
 git clone https://github.com/zoltantothcom/react-clamp-lines.git
 cd react-clamp-lines
@@ -83,5 +84,7 @@ npm start
 ```
 then open [http://localhost:3000](http://localhost:3000)
 
-## license
-[Unlicense](http://unlicense.org)
+## License
+Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
+
+See [Unlicense](http://unlicense.org) for full details.
