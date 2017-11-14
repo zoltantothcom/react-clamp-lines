@@ -21,7 +21,7 @@ Responsive clamping component with _&laquo;Read more&raquo;_/_&laquo;Read less&r
 ## Usage
 ```js
 import React, { Component } from 'react';
-import React-DOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import ClampLines from 'react-clamp-lines';
 
 class App extends Component {
