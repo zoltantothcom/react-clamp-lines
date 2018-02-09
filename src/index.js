@@ -23,11 +23,13 @@ export default class ClampLines extends PureComponent {
   }
 
   componentDidMount() {
-    this.lineHeight = this.element.clientHeight + 1;
-    this.clampLines();
+    if (this.props.text) {
+      this.lineHeight = this.element.clientHeight + 1;
+      this.clampLines();
 
-    if (this.watch) {
-      window.addEventListener('resize', this.debounced);
+      if (this.watch) {
+        window.addEventListener('resize', this.debounced);
+      }
     }
   }
 
