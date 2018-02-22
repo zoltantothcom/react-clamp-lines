@@ -1,6 +1,6 @@
 {
   "name": "nanoclamp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Responsive text clamping component",
   "main": "lib/index.js",
   "scripts": {
