@@ -109,12 +109,12 @@ class NanoClamp extends PureComponent {
 
     const props = {
       className,
-      ref: (e) => {
+      ref: e => {
         this.element = e
       }
     }
 
-    return createElement(is, props, text);
+    return createElement(is, props, text)
   }
 }
 

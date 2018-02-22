@@ -1,10 +1,8 @@
 # nanoclamp
-Responsive text clamping component.
 
 ###### [Storybook](https://nanoclamp.netlify.com/)
 
-## Install
-`npm install nanoclamp --save`
+> Responsive text clamping component.
 
 ## Features
  - built for `React` with no dependencies
@@ -12,11 +10,16 @@ Responsive text clamping component.
  - responsive
  - window resize event `debounced` &mdash; and [why it's important](https://davidwalsh.name/javascript-debounce-function)
 
-## Usage
-```js
-import NanoClamp from 'nanoclamp';
+## Install
 
-...
+```
+npm install nanoclamp --save
+```
+
+
+## Usage
+```jsx
+import NanoClamp from 'nanoclamp';
 
 <NanoClamp
   text={'Some text to clamp.'}

@@ -1,49 +1,83 @@
 {
   "name": "nanoclamp",
-  "version": "1.1.0",
   "description": "Responsive text clamping component for React",
   "homepage": "https://github.com/microlinkhq/nanoclamp",
+  "version": "1.1.0",
   "main": "lib/index.js",
-  "scripts": {
-    "build": "webpack",
-    "build-storybook": "build-storybook",
-    "dev": "start-storybook -p 6006",
-    "test": "exit 0"
-  },
-  "peerDependencies": {
-    "react": "^16.2.0"
-  },
-  "dependencies": {
-    "react": "^16.2.0",
-    "webpack": "^2.6.1"
-  },
-  "devDependencies": {
-    "@storybook/react": "^3.3.14",
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.24.1",
-    "babel-loader": "^7.0.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.5.1",
-    "prop-types": "^15.6.0",
-    "react-dom": "^16.2.0"
+  "author": {
+    "name": "Brad Adams"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/microlinkhq/nanoclamp.git"
+    "url": "git+https://github.com/microlinkhq/nanoclamp.git"
   },
-  "author": "Brad Adams",
-  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/microlinkhq/nanoclamp/issues"
+  },
   "keywords": [
     "clamp",
     "clamping",
-    "react clamp",
-    "clamp lines",
-    "react clamp lines",
-    "react clamping component",
-    "react ellipsis"
+    "components",
+    "ellipsis",
+    "lines",
+    "react"
   ],
-  "bugs": {
-    "url": "https://github.com/microlinkhq/nanoclamp/issues"
+  "devDependencies": {
+    "@storybook/react": "latest",
+    "babel-cli": "latest",
+    "babel-eslint": "latest",
+    "babel-plugin-transform-class-properties": "latest",
+    "babel-plugin-transform-object-rest-spread": "latest",
+    "babel-plugin-transform-react-constant-elements": "latest",
+    "babel-plugin-transform-react-inline-elements": "latest",
+    "babel-plugin-transform-react-pure-class-to-function": "latest",
+    "babel-plugin-transform-react-remove-prop-types": "latest",
+    "babel-preset-env": "latest",
+    "babel-preset-react": "latest",
+    "eslint-plugin-jsx-a11y": "latest",
+    "microbundle": "latest",
+    "prop-types": "latest",
+    "react": "^16",
+    "react-dom": "^16"
+  },
+  "engines": {
+    "node": ">= 8"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "npm run build:babel && npm run build:microbundle",
+    "build-storybook": "build-storybook",
+    "build:babel": "NODE_ENV=production BABEL_ENV=production babel src -d lib",
+    "build:microbundle": "NODE_ENV=production microbundle build --target browser --entry lib/index.js",
+    "dev": "start-storybook -p 6006",
+    "lint": "standard-markdown && standard src stories",
+    "pretest": "npm run lint && npm run update",
+    "pretty": "prettier-standard index.js {core,test,bin}/**/*.js --single-quote",
+    "test": "exit 0"
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "prettier-standard",
+      "git add"
+    ]
+  },
+  "peerDependencies": {
+    "react": ">= 16 < 17"
+  },
+  "standard": {
+    "globals": [
+      "React",
+      "fetch"
+    ],
+    "ignore": [
+      "/lib/"
+    ],
+    "parser": "babel-eslint",
+    "plugins": [
+      "jsx-a11y"
+    ]
   }
 }
