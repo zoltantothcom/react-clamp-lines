@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react'
+import React, {createElement, PureComponent} from 'react'
 import PropTypes from 'prop-types'
 
 const ELLIPSIS = '...'
@@ -100,33 +100,33 @@ class NanoClamp extends PureComponent {
   }
 
   render() {
-    const {className, text: propText} = this.props
+    const {className, is, text: propText} = this.props
     const {text} = this.state
 
     if (!propText) {
       return null
     }
 
-    return (
-      <div
-        className={className}
-        ref={e => {
-          this.element = e
-        }}
-      >
-        {text}
-      </div>
-    )
+    const props = {
+      className,
+      ref: (e) => {
+        this.element = e
+      }
+    }
+
+    return createElement(is, props, text);
   }
 }
 
 NanoClamp.defaultProps = {
   className: '',
+  is: 'div',
   lines: 3
 }
 
 NanoClamp.propTypes = {
   className: PropTypes.string,
+  is: PropTypes.string,
   lines: PropTypes.number,
   text: PropTypes.string.isRequired
 }
