@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 
 const ELLIPSIS = '...';
 
-export default class ClampLines extends PureComponent {
+export default class NanoClamp extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -124,7 +124,7 @@ export default class ClampLines extends PureComponent {
   }
 }
 
-ClampLines.defaultProps = {
+NanoClamp.defaultProps = {
   buttons: true,
   lines: 3,
   delay: 300
