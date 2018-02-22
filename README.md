@@ -30,7 +30,8 @@ prop | type | default&#160;value | description |
 -----|------|--------------------|-------------|
 text | `string` |  | Text you wish to clamp
 lines | `number` | `3` | Number of visible lines
-className | `string` |  | CSS class names added to component
+className | `string` |  | CSS classname(s) added to the string
+is | `string` | `'div'` | DOM selector used to render the string
 
 ## License
 
