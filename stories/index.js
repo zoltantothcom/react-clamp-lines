@@ -27,16 +27,19 @@ const NanoClampWrap = ({background, lines, width}) => (
 const examples = [
   {
     background: '#0984e3',
+    key: 1,
     lines: 1,
     width: 500
   },
   {
     background: '#6c5ce7',
+    key: 2,
     lines: 2,
     width: 370
   },
   {
     background: '#e84393',
+    key: 3,
     lines: 3,
     width: 270
   }
