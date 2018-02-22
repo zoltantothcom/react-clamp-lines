@@ -5,7 +5,7 @@ import NanoClamp from '../src/index'
 const string =
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, dignissimos totam nam cumque ipsum autem placeat. Doloribus nesciunt id saepe quasi, quod, quis voluptatibus rerum at perspiciatis impedit ab nostrum.'
 
-const NanoClampWrap = ({background, lines, width}) => (
+const NanoClampWrap = ({background, is, lines, width}) => (
   <div
     style={{
       width,
@@ -20,7 +20,7 @@ const NanoClampWrap = ({background, lines, width}) => (
       boxSizing: 'border-box'
     }}
   >
-    <NanoClamp text={string} lines={lines} />
+    <NanoClamp text={string} lines={lines} is={is} />
   </div>
 )
 
@@ -35,13 +35,15 @@ const examples = [
     background: '#6c5ce7',
     key: 2,
     lines: 2,
-    width: 370
+    width: 370,
+    is: 'p'
   },
   {
     background: '#e84393',
     key: 3,
     lines: 3,
-    width: 270
+    width: 270,
+    is: 'blockquote'
   }
 ]
 
