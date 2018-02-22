@@ -1,6 +1,8 @@
 # nanoclamp
 Responsive text clamping component.
 
+###### [Storybook](https://nanoclamp.netlify.com/)
+
 ## Install
 `npm install nanoclamp --save`
 
