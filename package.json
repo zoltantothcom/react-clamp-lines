@@ -1,11 +1,14 @@
 {
   "name": "nanoclamp",
   "version": "1.0.1",
-  "description": "Responsive text clamping component",
+  "description": "Responsive text clamping component for React",
   "homepage": "https://github.com/microlinkhq/nanoclamp",
   "main": "lib/index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "build-storybook": "build-storybook",
+    "dev": "start-storybook -p 6006",
+    "test": "exit 0"
   },
   "peerDependencies": {
     "react": "^16.2.0"
@@ -15,12 +18,14 @@
     "webpack": "^2.6.1"
   },
   "devDependencies": {
+    "@storybook/react": "^3.3.14",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.5.1"
+    "babel-preset-env": "^1.5.1",
+    "react-dom": "^16.2.0"
   },
   "repository": {
     "type": "git",
