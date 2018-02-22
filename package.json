@@ -1,7 +1,7 @@
 {
-  "name": "react-clamp-lines",
-  "version": "1.0.3",
-  "description": "Responsive clamping component with Read more/Read less buttons built for React.",
+  "name": "nanoclamp",
+  "version": "1.0.1",
+  "description": "Responsive text clamping component",
   "main": "lib/index.js",
   "scripts": {
     "build": "webpack"
@@ -23,10 +23,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zoltantothcom/react-clamp-lines.git"
+    "url": "https://github.com/microlinkhq/nanoclamp.git"
   },
-  "author": "Zoltan Toth",
-  "license": "Unlicense",
+  "author": "Brad Adams",
+  "license": "MIT",
   "keywords": [
     "clamp",
     "clamping",
@@ -37,7 +37,6 @@
     "react ellipsis"
   ],
   "bugs": {
-    "url": "https://github.com/zoltantothcom/react-clamp-lines/issues"
-  },
-  "homepage": "https://stackblitz.com/edit/react-clamp-lines"
+    "url": "https://github.com/microlinkhq/nanoclamp/issues"
+  }
 }

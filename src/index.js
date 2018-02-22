@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 
-export default class ClampLines extends PureComponent {
+const ELLIPSIS = '...';
+
+export default class NanoClamp extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -17,7 +19,6 @@ export default class ClampLines extends PureComponent {
     };
 
     this.action = this.action.bind(this);
-    this.clickHandler = this.clickHandler.bind(this);
 
     this.debounced = this.debounce(this.action, props.delay);
   }
@@ -36,7 +37,6 @@ export default class ClampLines extends PureComponent {
   componentWillUnmount() {
     window.removeEventListener('resize', this.debounced);
     this.action = null;
-    this.clickHandler = null;
   }
 
   debounce(func, wait, immediate) {
@@ -65,7 +65,7 @@ export default class ClampLines extends PureComponent {
   clampLines() {
     this.setState({ text: '' });
 
-    let maxHeight = this.lineHeight * this.props.lines + 1;
+    const maxHeight = this.lineHeight * this.props.lines + 1;
 
     this.start = 0;
     this.middle = 0;
@@ -85,8 +85,14 @@ export default class ClampLines extends PureComponent {
       this.moveMarkers(maxHeight);
     }
 
-    this.element.innerText = this.original.slice(0, this.middle - 5) + this.getEllipsis();
-    this.setState({ text: this.original.slice(0, this.middle - 5) + this.getEllipsis() });
+    this.setState(
+      {
+        text: this.original.slice(0, this.middle - 5) + ELLIPSIS
+      },
+      () => {
+        this.element.innerText = this.state.text
+      }
+    );
   }
 
   moveMarkers(maxHeight) {
@@ -103,29 +109,6 @@ export default class ClampLines extends PureComponent {
     return `clamp-lines ${className}`;
   }
 
-  getEllipsis() {
-    return this.watch && !this.state.noClamp ? this.props.ellipsis : '';
-  }
-
-  getButton() {
-    if (this.state.noClamp || !this.props.buttons) return;
-
-    let buttonText = this.watch ? this.props.moreText : this.props.lessText;
-
-    return (
-      <button className="clamp-lines__button" onClick={this.clickHandler}>
-        {buttonText}
-      </button>
-    );
-  }
-
-  clickHandler(e) {
-    e.preventDefault();
-
-    this.watch = !this.watch;
-    this.watch ? this.clampLines() : this.setState({ text: this.original });
-  }
-
   render() {
     if (!this.props.text) {
       return null;
@@ -136,17 +119,13 @@ export default class ClampLines extends PureComponent {
         <div ref={e => { this.element = e; }}>
             {this.state.text}
         </div>
-        {this.getButton()}
       </div>
     );
   }
 }
 
-ClampLines.defaultProps = {
+NanoClamp.defaultProps = {
   buttons: true,
   lines: 3,
-  delay: 300,
-  ellipsis: '...',
-  moreText: 'Read more',
-  lessText: 'Read less'
+  delay: 300
 };
