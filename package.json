@@ -2,6 +2,7 @@
   "name": "nanoclamp",
   "version": "1.0.1",
   "description": "Responsive text clamping component",
+  "homepage": "https://github.com/microlinkhq/nanoclamp",
   "main": "lib/index.js",
   "scripts": {
     "build": "webpack"
