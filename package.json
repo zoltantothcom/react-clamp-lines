@@ -7,11 +7,7 @@
     "build": "webpack"
   },
   "peerDependencies": {
-    "react": "^16.2.0"
-  },
-  "dependencies": {
-    "react": "^16.2.0",
-    "webpack": "^2.6.1"
+    "react": "^15 || ^16"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -19,7 +15,9 @@
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.5.1"
+    "babel-preset-env": "^1.5.1",
+    "react": "^16.2.0",
+    "webpack": "^2.6.1"
   },
   "repository": {
     "type": "git",
