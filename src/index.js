@@ -42,8 +42,6 @@ export default class ClampLines extends PureComponent {
     if (!this.ssr) {
       window.removeEventListener('resize', this.debounced);
     }
-    this.action = null;
-    this.clickHandler = null;
   }
 
   debounce(func, wait, immediate) {
