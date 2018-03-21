@@ -16,14 +16,19 @@ export default class ClampLines extends PureComponent {
       text: '.',
     };
 
+    // If window is undefined it means the code is executed server-side
+    this.ssr = typeof window === 'undefined';
+
     this.action = this.action.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
 
-    this.debounced = this.debounce(this.action, props.delay);
+    if (!this.ssr) {
+      this.debounced = this.debounce(this.action, props.delay);
+    }
   }
 
   componentDidMount() {
-    if (this.props.text) {
+    if (this.props.text && !this.ssr) {
       this.lineHeight = this.element.clientHeight + 1;
       this.clampLines();
 
@@ -34,9 +39,9 @@ export default class ClampLines extends PureComponent {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.debounced);
-    this.action = null;
-    this.clickHandler = null;
+    if (!this.ssr) {
+      window.removeEventListener('resize', this.debounced);
+    }
   }
 
   debounce(func, wait, immediate) {
