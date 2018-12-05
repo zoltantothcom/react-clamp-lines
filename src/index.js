@@ -164,7 +164,7 @@ export default class ClampLines extends PureComponent {
   }
 }
 
-ClampLines.propTypes({
+ClampLines.propTypes = {
   text: PropTypes.string.isRequired,
   lines: PropTypes.number,
   ellipsis: PropTypes.string,
@@ -173,7 +173,7 @@ ClampLines.propTypes({
   lessText: PropTypes.string,
   className: PropTypes.string,
   delay: PropTypes.number,
-});
+};
 
 ClampLines.defaultProps = {
   lines: 3,
