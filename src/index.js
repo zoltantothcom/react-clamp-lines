@@ -48,7 +48,8 @@ export default class ClampLines extends PureComponent {
     let timeout;
 
     return () => {
-      let context = this, args = arguments;
+      let context = this,
+        args = arguments;
       let later = () => {
         timeout = null;
         if (!immediate) func.apply(context, args);
@@ -58,17 +59,21 @@ export default class ClampLines extends PureComponent {
       timeout = setTimeout(later, wait);
       if (callNow) func.apply(context, args);
     };
-  };
+  }
 
   action() {
     if (this.watch) {
-      this.setState({ noClamp: false });
+      this.setState({
+        noClamp: false,
+      });
       this.clampLines();
     }
   }
 
   clampLines() {
-    this.setState({ text: '' });
+    this.setState({
+      text: '',
+    });
 
     let maxHeight = this.lineHeight * this.props.lines + 1;
 
@@ -90,8 +95,11 @@ export default class ClampLines extends PureComponent {
       this.moveMarkers(maxHeight);
     }
 
-    this.element.innerText = this.original.slice(0, this.middle - 5) + this.getEllipsis();
-    this.setState({ text: this.original.slice(0, this.middle - 5) + this.getEllipsis() });
+    this.element.innerText =
+      this.original.slice(0, this.middle - 5) + this.getEllipsis();
+    this.setState({
+      text: this.original.slice(0, this.middle - 5) + this.getEllipsis(),
+    });
   }
 
   moveMarkers(maxHeight) {
@@ -128,7 +136,11 @@ export default class ClampLines extends PureComponent {
     e.preventDefault();
 
     this.watch = !this.watch;
-    this.watch ? this.clampLines() : this.setState({ text: this.original });
+    this.watch
+      ? this.clampLines()
+      : this.setState({
+          text: this.original,
+        });
   }
 
   render() {
@@ -138,8 +150,12 @@ export default class ClampLines extends PureComponent {
 
     return (
       <div className={this.getClassName()}>
-        <div ref={e => { this.element = e; }}>
-            {this.state.text}
+        <div
+          ref={e => {
+            this.element = e;
+          }}
+        >
+          {this.state.text}
         </div>
         {this.getButton()}
       </div>
@@ -153,5 +169,5 @@ ClampLines.defaultProps = {
   delay: 300,
   ellipsis: '...',
   moreText: 'Read more',
-  lessText: 'Read less'
+  lessText: 'Read less',
 };
