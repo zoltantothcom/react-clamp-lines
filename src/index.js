@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
-export default class ClampLines extends PureComponent {
+class ClampLines extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -163,11 +164,22 @@ export default class ClampLines extends PureComponent {
   }
 }
 
+ClampLines.propTypes({
+  text: PropTypes.string.isRequired,
+  lines: PropTypes.number,
+  ellipsis: PropTypes.string,
+  buttons: PropTypes.bool,
+  moreText: PropTypes.string,
+  lessText: PropTypes.string,
+  className: PropTypes.string,
+  delay: PropTypes.number,
+});
+
 ClampLines.defaultProps = {
-  buttons: true,
   lines: 3,
-  delay: 300,
   ellipsis: '...',
+  buttons: true,
   moreText: 'Read more',
   lessText: 'Read less',
+  delay: 300,
 };
