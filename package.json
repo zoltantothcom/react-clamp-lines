@@ -1,6 +1,6 @@
 {
   "name": "react-clamp-lines",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Responsive clamping component with Read more/Read less buttons built for React.",
   "main": "lib/index.js",
   "scripts": {

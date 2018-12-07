@@ -72,6 +72,8 @@ export default class ClampLines extends PureComponent {
   }
 
   clampLines() {
+    if (!this.element) return;
+
     this.setState({
       text: '',
     });
