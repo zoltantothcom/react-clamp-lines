@@ -45,6 +45,13 @@ export default class ClampLines extends PureComponent {
     }
   }
 
+  componentDidUpdate (prevProps) {
+    if (prevProps.text !== this.props.text) {
+      this.original = this.props.text;
+      this.clampLines();
+    }
+  }
+
   debounce(func, wait, immediate) {
     let timeout;
 
