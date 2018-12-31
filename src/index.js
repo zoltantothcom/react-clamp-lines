@@ -136,7 +136,9 @@ export default class ClampLines extends PureComponent {
   }
 
   clickHandler(e) {
+    const { stopPropagation } = this.props;
     e.preventDefault();
+    stopPropagation && e.stopPropagation();
 
     this.watch = !this.watch;
     this.watch
@@ -175,6 +177,7 @@ ClampLines.propTypes = {
   lessText: PropTypes.string,
   className: PropTypes.string,
   delay: PropTypes.number,
+  stopPropagation: PropTypes.bool,
 };
 
 ClampLines.defaultProps = {
