@@ -45,6 +45,13 @@ export default class ClampLines extends PureComponent {
     }
   }
 
+  componentDidUpdate (prevProps) {
+    if (prevProps.text !== this.props.text) {
+      this.original = this.props.text;
+      this.clampLines();
+    }
+  }
+
   debounce(func, wait, immediate) {
     let timeout;
 
@@ -136,7 +143,9 @@ export default class ClampLines extends PureComponent {
   }
 
   clickHandler(e) {
+    const { stopPropagation } = this.props;
     e.preventDefault();
+    stopPropagation && e.stopPropagation();
 
     this.watch = !this.watch;
     this.watch
@@ -175,6 +184,7 @@ ClampLines.propTypes = {
   lessText: PropTypes.string,
   className: PropTypes.string,
   delay: PropTypes.number,
+  stopPropagation: PropTypes.bool,
 };
 
 ClampLines.defaultProps = {
