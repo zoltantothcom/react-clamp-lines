@@ -74,17 +74,17 @@ List of all available props with their default values and description.
 />
 ```
 
-| prop            | type      | default&#160;value | description                                                                               |
-| --------------- | --------- | ------------------ | ----------------------------------------------------------------------------------------- |
-| text            | {String}  |                    | Text you wish to clamp                                                                    |
-| lines           | {Number}  | `3`                | Number of visible lines                                                                   |
-| ellipsis        | {String}  | `...`              | Text content for the ellipsis - will appear after the clamped lines                       |
-| buttons         | {Boolean} | `true`             | The _&laquo;Read more&raquo;_ and _&laquo;Read less&raquo;_ buttons                       |
-| moreText        | {String}  | `Read more`        | _&laquo;Read more&raquo;_ button value                                                    |
-| lessText        | {String}  | `Read less`        | _&laquo;Read less&raquo;_ button value                                                    |
-| className       | {String}  |                    | CSS class names added to component                                                        |
-| delay           | {Number}  | `300`              | Milliseconds, the function is waiting before being triggered, after it stops being called |
-| stopPropagation | {Boolean} | `false`            | Prevents the event from bubbling up the DOM tree when clicked on the "Read More" button   |
+| prop            | type      | default&#160;value | description                                                                                           |
+| --------------- | --------- | ------------------ | ----------------------------------------------------------------------------------------------------- |
+| text            | {String}  |                    | Text you wish to clamp                                                                                |
+| lines           | {Number}  | `3`                | Number of visible lines                                                                               |
+| ellipsis        | {String}  | `...`              | Text content for the ellipsis - will appear after the clamped lines                                   |
+| buttons         | {Boolean} | `true`             | The _&laquo;Read more&raquo;_ and _&laquo;Read less&raquo;_ buttons                                   |
+| moreText        | {String}  | `Read more`        | _&laquo;Read more&raquo;_ button value                                                                |
+| lessText        | {String}  | `Read less`        | _&laquo;Read less&raquo;_ button value                                                                |
+| className       | {String}  |                    | CSS class names added to component                                                                    |
+| delay           | {Number}  | `300`              | Milliseconds, the function is waiting before being triggered, after it stops being called             |
+| stopPropagation | {Boolean} | `false`            | Prevents the event from bubbling up the DOM tree when clicked on the _&laquo;Read more&raquo;_ button |
 
 ## License
 
