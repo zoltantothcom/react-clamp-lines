@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-declare namespace ClampLines {
+declare module 'react-clamp-lines' {
     export interface ClampLinesProps {
         buttons?: boolean;
         className?: string;
@@ -12,8 +12,7 @@ declare namespace ClampLines {
         moreText?: string;
         text: string;
     }
+
+    declare class ClampLines extends React.Component<ClampLinesProps> { }
+    export default ClampLines;
 }
-
-declare class ClampLines extends React.Component<ClampLines.ClampLinesProps> { }
-
-export = ClampLines;
