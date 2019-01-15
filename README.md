@@ -70,6 +70,7 @@ List of all available props with their default values and description.
   lessText={String}
   className={String}
   delay={Number}
+  stopPropagation={Boolean}
 />
 ```
 
