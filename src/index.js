@@ -25,6 +25,8 @@ export default class ClampLines extends PureComponent {
 
     if (!this.ssr) {
       this.debounced = this.debounce(this.action, props.delay);
+    } else {
+      this.state.text = props.text
     }
   }
 
