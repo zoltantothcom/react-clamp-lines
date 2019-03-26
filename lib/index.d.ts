@@ -1,17 +1,19 @@
 import * as React from 'react';
 
-export type ClampLinesProps = {
-  text: string;
-  lines?: number;
-  ellipsis?: string;
-  buttons?: boolean;
-  moreText?: string;
-  lessText?: string;
-  className?: string;
-  delay?: number;
-  stopPropagation?: boolean;
-};
+declare namespace ClampLines {
+  export interface ClampLinesProps {
+    text: string;
+    lines?: number;
+    ellipsis?: string;
+    buttons?: boolean;
+    moreText?: string;
+    lessText?: string;
+    className?: string;
+    delay?: number;
+    stopPropagation?: boolean;
+  }
+}
 
-declare const ClampLines: React.Component<ClampLinesProps>;
+declare class ClampLines extends React.Component<ClampLines.ClampLinesProps> { }
 
-export default ClampLines;
+export = ClampLines;
