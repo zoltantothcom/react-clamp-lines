@@ -19,6 +19,7 @@ Responsive and accessible clamping component with _&laquo;Read more&raquo;_/_&la
 - customizable ellipsis text
 - customizable CSS classes
 - responsive
+- accessible
 - window resize event `debounced` &mdash; and [why it's important](https://davidwalsh.name/javascript-debounce-function)
   > If your web app uses JavaScript to accomplish taxing tasks, a **debounce** function is essential to ensuring a given task doesn't fire so often that it bricks browser performance.
 
