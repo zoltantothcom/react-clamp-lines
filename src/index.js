@@ -12,7 +12,11 @@ export default class ClampLines extends PureComponent {
     this.start = 0;
     this.middle = 0;
     this.end = 0;
+    this.randomID = Math.random()
+      .toString(36)
+      .substr(2, 10);
     this.state = {
+      expanded: true,
       noClamp: false,
       text: '.',
     };
@@ -26,7 +30,7 @@ export default class ClampLines extends PureComponent {
     if (!this.ssr) {
       this.debounced = this.debounce(this.action, props.delay);
     } else {
-      this.state.text = props.text
+      this.state.text = props.text;
     }
   }
 
@@ -47,7 +51,7 @@ export default class ClampLines extends PureComponent {
     }
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate(prevProps) {
     if (prevProps.text !== this.props.text) {
       this.original = this.props.text;
       this.clampLines();
@@ -77,6 +81,7 @@ export default class ClampLines extends PureComponent {
         noClamp: false,
       });
       this.clampLines();
+      this.setState({ expanded: !this.state.expanded });
     }
   }
 
@@ -138,7 +143,12 @@ export default class ClampLines extends PureComponent {
     let buttonText = this.watch ? this.props.moreText : this.props.lessText;
 
     return (
-      <button className="clamp-lines__button" onClick={this.clickHandler}>
+      <button
+        className="clamp-lines__button"
+        onClick={this.clickHandler}
+        aria-controls={`clamped-content-${this.randomID}`}
+        aria-expanded={!this.state.expanded}
+      >
         {buttonText}
       </button>
     );
@@ -146,6 +156,7 @@ export default class ClampLines extends PureComponent {
 
   clickHandler(e) {
     const { stopPropagation } = this.props;
+
     e.preventDefault();
     stopPropagation && e.stopPropagation();
 
@@ -155,6 +166,8 @@ export default class ClampLines extends PureComponent {
       : this.setState({
           text: this.original,
         });
+
+    this.setState({ expanded: !this.state.expanded });
   }
 
   render() {
@@ -165,13 +178,15 @@ export default class ClampLines extends PureComponent {
     return (
       <div className={this.getClassName()}>
         <div
+          id={!this.ssr && `clamped-content-${this.randomID}`}
+          aria-hidden={!this.ssr && this.state.expanded}
           ref={e => {
             this.element = e;
           }}
         >
           {this.state.text}
         </div>
-        {this.getButton()}
+        {!this.ssr && this.getButton()}
       </div>
     );
   }
