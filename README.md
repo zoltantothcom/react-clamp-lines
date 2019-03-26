@@ -1,5 +1,7 @@
 # react-clamp-lines
 
+![npm](https://img.shields.io/npm/dm/react-clamp-lines.svg) ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/react-clamp-lines.svg)
+
 Responsive and accessible clamping component with _&laquo;Read more&raquo;_/_&laquo;Read less&raquo;_ buttons built for [React](http://facebook.github.io/react/).
 
 ![react-clamp-lines](react-clamp.png 'react-clamp-lines')
