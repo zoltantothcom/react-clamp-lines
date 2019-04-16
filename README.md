@@ -12,7 +12,7 @@ Responsive and accessible clamping component with _&laquo;Read more&raquo;_/_&la
 
 ## Install
 
-`npm install --save react-clamp-lines`
+`npm i react-clamp-lines`
 
 ## Features
 
