@@ -175,17 +175,17 @@ export default class ClampLines extends PureComponent {
       return null;
     }
 
+    const innerClampElement = React.createElement(this.props.innerElement, { 
+      ref: e => {
+        this.element = e;
+      },
+      id: !this.ssr && `clamped-content-${this.randomID}`,
+      'aria-hidden': !this.ssr && this.state.expanded,
+    }, this.state.text);
+
     return (
       <div className={this.getClassName()}>
-        <div
-          id={!this.ssr && `clamped-content-${this.randomID}`}
-          aria-hidden={!this.ssr && this.state.expanded}
-          ref={e => {
-            this.element = e;
-          }}
-        >
-          {this.state.text}
-        </div>
+        {innerClampElement}
         {!this.ssr && this.getButton()}
       </div>
     );
@@ -202,6 +202,7 @@ ClampLines.propTypes = {
   className: PropTypes.string,
   delay: PropTypes.number,
   stopPropagation: PropTypes.bool,
+  innerElement: PropTypes.string,
 };
 
 ClampLines.defaultProps = {
@@ -211,4 +212,5 @@ ClampLines.defaultProps = {
   moreText: 'Read more',
   lessText: 'Read less',
   delay: 300,
+  innerElement: 'div'
 };
