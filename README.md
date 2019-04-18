@@ -37,11 +37,12 @@ class App extends Component {
     return (
       <ClampLines
         text={text_to_clamp}
-        lines="4"
+        lines={4}
         ellipsis="..."
         moreText="Expand"
         lessText="Collapse"
         className="custom-class"
+        innerElement="p"
       />
     );
   }
@@ -54,7 +55,7 @@ The component and the or _&laquo;Read more&raquo;_ button always have the `clamp
 
 ```html
 <div class="clamp-lines custom-class">
-  <div>clamped text here...</div>
+  <p>clamped text here...</p>
   <button class="clamp-lines__button">Expand</button>
 </div>
 ```
@@ -74,6 +75,7 @@ List of all available props with their default values and description.
   className={String}
   delay={Number}
   stopPropagation={Boolean}
+  innerElement={String}
 />
 ```
 
@@ -88,6 +90,7 @@ List of all available props with their default values and description.
 | className       | {String}  |                    | CSS class names added to component                                                                    |
 | delay           | {Number}  | `300`              | Milliseconds, the function is waiting before being triggered, after it stops being called             |
 | stopPropagation | {Boolean} | `false`            | Prevents the event from bubbling up the DOM tree when clicked on the _&laquo;Read more&raquo;_ button |
+| innerElement    | {String}  | `div`              | Custom inner element for clamped text. **This MUST be a [block level element](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements#Elements) or styled as one.**
 
 ## License
 
