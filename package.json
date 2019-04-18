@@ -15,10 +15,10 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^7.1.5",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.5.1",
+    "babel-preset-env": "^1.7.0",
     "react": "^16.2.0",
     "webpack": "^2.6.1"
   },
