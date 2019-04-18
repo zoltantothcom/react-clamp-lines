@@ -16,7 +16,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
+            presets: ['@babel/preset-env'],
+            plugins: [
+              '@babel/plugin-proposal-object-rest-spread',
+              "@babel/plugin-transform-react-jsx"
+            ]
           }
         }
       }
@@ -24,5 +28,6 @@ module.exports = {
   },
   externals: {
     'react': 'commonjs react'
-  }
+  },
+  mode: 'production'
 };
