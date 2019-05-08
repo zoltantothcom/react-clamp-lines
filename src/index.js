@@ -12,13 +12,11 @@ export default class ClampLines extends PureComponent {
     this.start = 0;
     this.middle = 0;
     this.end = 0;
-    this.randomID = Math.random()
-      .toString(36)
-      .substr(2, 10);
+    this.uuid = props.id;
     this.state = {
       expanded: true,
       noClamp: false,
-      text: '.',
+      text: props.text.substring(0, 20),
     };
 
     // If window is undefined it means the code is executed server-side
@@ -30,7 +28,7 @@ export default class ClampLines extends PureComponent {
     if (!this.ssr) {
       this.debounced = this.debounce(this.action, props.delay);
     } else {
-      this.state.text = props.text;
+      this.state.text = props.text.substring(0, 20);
     }
   }
 
@@ -146,7 +144,7 @@ export default class ClampLines extends PureComponent {
       <button
         className="clamp-lines__button"
         onClick={this.clickHandler}
-        aria-controls={`clamped-content-${this.randomID}`}
+        aria-controls={`clamped-content-${this.uuid}`}
         aria-expanded={!this.state.expanded}
       >
         {buttonText}
@@ -179,14 +177,14 @@ export default class ClampLines extends PureComponent {
       ref: e => {
         this.element = e;
       },
-      id: !this.ssr && `clamped-content-${this.randomID}`,
-      'aria-hidden': !this.ssr && this.state.expanded,
+      id: `clamped-content-${this.uuid}`,
+      'aria-hidden': this.state.expanded,
     }, this.state.text);
 
     return (
       <div className={this.getClassName()}>
         {innerClampElement}
-        {!this.ssr && this.getButton()}
+        {this.getButton()}
       </div>
     );
   }
@@ -194,6 +192,7 @@ export default class ClampLines extends PureComponent {
 
 ClampLines.propTypes = {
   text: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   lines: PropTypes.number,
   ellipsis: PropTypes.string,
   buttons: PropTypes.bool,
