@@ -3,6 +3,9 @@
   "version": "3.0.0",
   "description": "Responsive and accessible clamping component with Read more/Read less buttons built for React.",
   "main": "lib/index.js",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "build": "webpack"
   },
