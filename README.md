@@ -43,6 +43,7 @@ class App extends Component {
         moreText="Expand"
         lessText="Collapse"
         className="custom-class"
+        buttonClassName="custom-button-classname"
         innerElement="p"
       />
     );
@@ -56,13 +57,13 @@ The component and the or _&laquo;Read more&raquo;_ button always have the `clamp
 
 ```html
 <div class="clamp-lines custom-class">
-  <p 
+  <p
     id="clamped-content-really-unique-id"
     aria-hidden="true"
   >
     clamped text here...
   </p>
-  <button 
+  <button
     class="clamp-lines__button"
     aria-controls="clamped-content-really-unique-id"
     aria-expanded="false"
@@ -102,6 +103,7 @@ List of all available props with their default values and description.
 | moreText        |          | {String}  | `Read more`        | _&laquo;Read more&raquo;_ button value |
 | lessText        |          | {String}  | `Read less`        | _&laquo;Read less&raquo;_ button value |
 | className       |          | {String}  |                    | CSS class names added to component |
+| buttonClassName |          | {String}  |                    | CSS class names added to button |
 | delay           |          | {Number}  | `300`              | Milliseconds, the function is waiting before being triggered, after it stops being called |
 | stopPropagation |          | {Boolean} | `false`            | Prevents the event from bubbling up the DOM tree when clicked on the _&laquo;Read more&raquo;_ button |
 | innerElement    |          | {String}  | `div`              | Custom inner element for clamped text. **This MUST be a [block level element](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements#Elements) or styled as one.**
