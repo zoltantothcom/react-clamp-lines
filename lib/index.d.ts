@@ -2,6 +2,7 @@ import * as React from 'react';
 
 export interface ClampLinesProps {
   text: string
+  id: string
   lines?: number
   ellipsis?: string
   buttons?: boolean
