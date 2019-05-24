@@ -13,6 +13,6 @@ export interface ClampLinesProps {
   innerElement?: string
 }
 
-declare class ClampLines extends React.Component {}
+declare class ClampLines extends React.Component<ClampLinesProps> {}
 
 export default ClampLines
