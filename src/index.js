@@ -178,7 +178,8 @@ export default class ClampLines extends PureComponent {
         this.element = e;
       },
       id: `clamped-content-${this.uuid}`,
-      'aria-hidden': this.state.expanded,
+      'aria-label': this.props.buttons ? null : this.props.text,
+      'aria-hidden': this.props.buttons ? this.state.expanded : null
     }, this.state.text);
 
     return (
