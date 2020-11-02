@@ -111,10 +111,12 @@ export default class ClampLines extends PureComponent {
     }
 
     this.element.innerText =
-      this.original.slice(0, this.middle - this.cutoff) + this.getEllipsis();
+      this.original.slice(0, this.middle - this.props.cutoff) +
+      this.getEllipsis();
     this.setState({
       text:
-        this.original.slice(0, this.middle - this.cutoff) + this.getEllipsis(),
+        this.original.slice(0, this.middle - this.props.cutoff) +
+        this.getEllipsis(),
     });
   }
 
