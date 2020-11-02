@@ -4,7 +4,7 @@
 
 Responsive and accessible clamping component with _&laquo;Read more&raquo;_/_&laquo;Read less&raquo;_ buttons built for [React](http://facebook.github.io/react/).
 
-![react-clamp-lines](react-clamp.png 'react-clamp-lines')
+![react-clamp-lines](react-clamp.png "react-clamp-lines")
 
 ## Demo
 
@@ -28,9 +28,9 @@ Responsive and accessible clamping component with _&laquo;Read more&raquo;_/_&la
 ## Usage
 
 ```js
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import ClampLines from 'react-clamp-lines';
+import React, { Component } from "react";
+import ReactDOM from "react-dom";
+import ClampLines from "react-clamp-lines";
 
 class App extends Component {
   render() {
@@ -49,20 +49,17 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('clamp'));
+ReactDOM.render(<App />, document.getElementById("clamp"));
 ```
 
 The component and the or _&laquo;Read more&raquo;_ button always have the `clamp-lines` and `clamp-lines__button` CSS classes respectively. In the example above the `custom-class` will be added to `clamp-lines`, so the output will be:
 
 ```html
 <div class="clamp-lines custom-class">
-  <p 
-    id="clamped-content-really-unique-id"
-    aria-hidden="true"
-  >
+  <p id="clamped-content-really-unique-id" aria-hidden="true">
     clamped text here...
   </p>
-  <button 
+  <button
     class="clamp-lines__button"
     aria-controls="clamped-content-really-unique-id"
     aria-expanded="false"
@@ -92,19 +89,20 @@ List of all available props with their default values and description.
 />
 ```
 
-| prop            | required | type      | default&#160;value | description  |
-| --------------- | -------- | --------- | ------------------ | ------------ |
-| text            | __*__    | {String}  |                    | Text you wish to clamp |
-| id              | __*__    | {String}  |                    | Unique id (used for ARIA props) |
-| lines           |          | {Number}  | `3`                | Number of visible lines |
-| ellipsis        |          | {String}  | `...`              | Text content for the ellipsis - will appear after the clamped lines |
-| buttons         |          | {Boolean} | `true`             | The _&laquo;Read more&raquo;_ and _&laquo;Read less&raquo;_ buttons |
-| moreText        |          | {String}  | `Read more`        | _&laquo;Read more&raquo;_ button value |
-| lessText        |          | {String}  | `Read less`        | _&laquo;Read less&raquo;_ button value |
-| className       |          | {String}  |                    | CSS class names added to component |
-| delay           |          | {Number}  | `300`              | Milliseconds, the function is waiting before being triggered, after it stops being called |
-| stopPropagation |          | {Boolean} | `false`            | Prevents the event from bubbling up the DOM tree when clicked on the _&laquo;Read more&raquo;_ button |
-| innerElement    |          | {String}  | `div`              | Custom inner element for clamped text. **This MUST be a [block level element](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements#Elements) or styled as one.**
+| prop            | required | type      | default&#160;value | description                                                                                                                                                                        |
+| --------------- | -------- | --------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| text            | **\***   | {String}  |                    | Text you wish to clamp                                                                                                                                                             |
+| id              | **\***   | {String}  |                    | Unique id (used for ARIA props)                                                                                                                                                    |
+| lines           |          | {Number}  | `3`                | Number of visible lines                                                                                                                                                            |
+| ellipsis        |          | {String}  | `...`              | Text content for the ellipsis - will appear after the clamped lines                                                                                                                |
+| cutoff          |          | {Number}  | `5`                | How many characters are going to be cut off from the last line before the ellipsis                                                                                                 |
+| buttons         |          | {Boolean} | `true`             | The _&laquo;Read more&raquo;_ and _&laquo;Read less&raquo;_ buttons                                                                                                                |
+| moreText        |          | {String}  | `Read more`        | _&laquo;Read more&raquo;_ button value                                                                                                                                             |
+| lessText        |          | {String}  | `Read less`        | _&laquo;Read less&raquo;_ button value                                                                                                                                             |
+| className       |          | {String}  |                    | CSS class names added to component                                                                                                                                                 |
+| delay           |          | {Number}  | `300`              | Milliseconds, the function is waiting before being triggered, after it stops being called                                                                                          |
+| stopPropagation |          | {Boolean} | `false`            | Prevents the event from bubbling up the DOM tree when clicked on the _&laquo;Read more&raquo;_ button                                                                              |
+| innerElement    |          | {String}  | `div`              | Custom inner element for clamped text. **This MUST be a [block level element](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements#Elements) or styled as one.** |
 
 ## License
 
