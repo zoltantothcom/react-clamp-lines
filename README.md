@@ -40,6 +40,7 @@ class App extends Component {
         id="really-unique-id"
         lines={4}
         ellipsis="..."
+        cutoff={12a}
         moreText="Expand"
         lessText="Collapse"
         className="custom-class"
@@ -79,6 +80,7 @@ List of all available props with their default values and description.
   id={String}
   lines={Number}
   ellipsis={String}
+  cutoff={Number}
   buttons={Boolean}
   moreText={String}
   lessText={String}
