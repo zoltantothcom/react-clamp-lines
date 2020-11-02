@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import React, { PureComponent } from "react";
+import PropTypes from "prop-types";
 
 export default class ClampLines extends PureComponent {
   constructor(props) {
@@ -20,7 +20,7 @@ export default class ClampLines extends PureComponent {
     };
 
     // If window is undefined it means the code is executed server-side
-    this.ssr = typeof window === 'undefined';
+    this.ssr = typeof window === "undefined";
 
     this.action = this.action.bind(this);
     this.clickHandler = this.clickHandler.bind(this);
@@ -38,14 +38,14 @@ export default class ClampLines extends PureComponent {
       this.clampLines();
 
       if (this.watch) {
-        window.addEventListener('resize', this.debounced);
+        window.addEventListener("resize", this.debounced);
       }
     }
   }
 
   componentWillUnmount() {
     if (!this.ssr) {
-      window.removeEventListener('resize', this.debounced);
+      window.removeEventListener("resize", this.debounced);
     }
   }
 
@@ -87,7 +87,7 @@ export default class ClampLines extends PureComponent {
     if (!this.element) return;
 
     this.setState({
-      text: '',
+      text: "",
     });
 
     let maxHeight = this.lineHeight * this.props.lines + 1;
@@ -111,9 +111,10 @@ export default class ClampLines extends PureComponent {
     }
 
     this.element.innerText =
-      this.original.slice(0, this.middle - 5) + this.getEllipsis();
+      this.original.slice(0, this.middle - this.cutoff) + this.getEllipsis();
     this.setState({
-      text: this.original.slice(0, this.middle - 5) + this.getEllipsis(),
+      text:
+        this.original.slice(0, this.middle - this.cutoff) + this.getEllipsis(),
     });
   }
 
@@ -126,13 +127,13 @@ export default class ClampLines extends PureComponent {
   }
 
   getClassName() {
-    let className = this.props.className || '';
+    let className = this.props.className || "";
 
     return `clamp-lines ${className}`;
   }
 
   getEllipsis() {
-    return this.watch && !this.state.noClamp ? this.props.ellipsis : '';
+    return this.watch && !this.state.noClamp ? this.props.ellipsis : "";
   }
 
   getButton() {
@@ -173,13 +174,17 @@ export default class ClampLines extends PureComponent {
       return null;
     }
 
-    const innerClampElement = React.createElement(this.props.innerElement, { 
-      ref: e => {
-        this.element = e;
+    const innerClampElement = React.createElement(
+      this.props.innerElement,
+      {
+        ref: (e) => {
+          this.element = e;
+        },
+        id: `clamped-content-${this.uuid}`,
+        "aria-hidden": this.state.expanded,
       },
-      id: `clamped-content-${this.uuid}`,
-      'aria-hidden': this.state.expanded,
-    }, this.state.text);
+      this.state.text
+    );
 
     return (
       <div className={this.getClassName()}>
@@ -202,14 +207,16 @@ ClampLines.propTypes = {
   delay: PropTypes.number,
   stopPropagation: PropTypes.bool,
   innerElement: PropTypes.string,
+  cutoff: PropTypes.number,
 };
 
 ClampLines.defaultProps = {
   lines: 3,
-  ellipsis: '...',
+  ellipsis: "...",
   buttons: true,
-  moreText: 'Read more',
-  lessText: 'Read less',
+  moreText: "Read more",
+  lessText: "Read less",
   delay: 300,
-  innerElement: 'div'
+  cutoff: 5,
+  innerElement: "div",
 };
