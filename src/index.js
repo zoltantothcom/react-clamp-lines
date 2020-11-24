@@ -171,6 +171,10 @@ export default class ClampLines extends PureComponent {
     this.setState({ expanded: !this.state.expanded });
   }
 
+  expanded() {
+    return this.state.expanded;
+  }
+
   render() {
     if (!this.props.text) {
       return null;
