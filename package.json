@@ -28,7 +28,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zoltantothcom/react-clamp-lines.git"
+    "url": "https://github.com/sektordv/react-clamp-lines.git"
   },
   "author": "Zoltan Toth",
   "license": "Unlicense",
@@ -42,7 +42,7 @@
     "react ellipsis"
   ],
   "bugs": {
-    "url": "https://github.com/zoltantothcom/react-clamp-lines/issues"
+    "url": "https://github.com/sektordv/react-clamp-lines/issues"
   },
   "homepage": "https://stackblitz.com/edit/react-clamp-lines"
 }
