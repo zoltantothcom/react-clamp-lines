@@ -100,11 +100,16 @@ export default class ClampLines extends PureComponent {
       this.middle = Math.floor((this.start + this.end) / 2);
       this.element.innerText = this.original.slice(0, this.middle);
       if (this.middle === this.original.length) {
-        this.setState({
-          text: this.original,
-          noClamp: true,
-        });
-        return;
+        if (this.element.clientHeight <= maxHeight) {
+          this.setState({
+            text: this.original,
+            noClamp: true,
+          });
+          return;
+        } else {
+          this.middle = this.original.length - 1;
+          break;          
+        }
       }
 
       this.moveMarkers(maxHeight);
