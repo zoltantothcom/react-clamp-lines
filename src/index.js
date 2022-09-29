@@ -178,7 +178,7 @@ export default class ClampLines extends PureComponent {
 			return null;
 		}
 		const innerClampElement =
-			props.type == 'html'
+			this.props.type == 'html'
 				? React.createElement(this.props.innerElement, {
 						ref: (e) => {
 							this.element = e;
