@@ -92,8 +92,7 @@ List of all available props with their default values and description.
 | --------------- | -------- | --------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | text            | **\***   | {String}  |                    | Text you wish to clamp                                                                                                                                                             |
 | id              | **\***   | {String}  |                    | Unique id (used for ARIA props)                                                                                                                                                    |
-| type            |          | 'html' or 'text |              | Type of string that you need to clamp
-                |
+| type            |          | 'html' \| 'text' |              | Type of string that you need to clamp																		|
 | lines           |          | {Number}  | `3`                | Number of visible lines                                                                                                                                                            |
 | ellipsis        |          | {String}  | `...`              | Text content for the ellipsis - will appear after the clamped lines                                                                                                                |
 | buttons         |          | {Boolean} | `true`             | The _&laquo;Read more&raquo;_ and _&laquo;Read less&raquo;_ buttons                                                                                                                |
