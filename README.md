@@ -12,8 +12,8 @@ Responsive and accessible clamping component with _&laquo;Read more&raquo;_/_&la
 
 ## Install
 
-`npm i @znzd/react-clamp-lines`
-`yarn add @znzd/react-clamp-lines`
+`npm i react-clamp-lines`
+`yarn add react-clamp-lines`
 
 ## Features
 
