@@ -2,214 +2,233 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 export default class ClampLines extends PureComponent {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.element = null;
-    this.original = props.text;
-    this.watch = true;
-    this.lineHeight = 0;
-    this.start = 0;
-    this.middle = 0;
-    this.end = 0;
-    this.uuid = props.id;
-    this.state = {
-      expanded: true,
-      noClamp: false,
-      text: props.text.substring(0, 20),
-    };
+		this.element = null;
+		this.original = props.text;
+		this.watch = true;
+		this.lineHeight = 0;
+		this.start = 0;
+		this.middle = 0;
+		this.end = 0;
+		this.uuid = props.id;
+		this.state = {
+			expanded: true,
+			noClamp: false,
+			text: props.text.substring(0, 20),
+		};
 
-    // If window is undefined it means the code is executed server-side
-    this.ssr = typeof window === 'undefined';
+		// If window is undefined it means the code is executed server-side
+		this.ssr = typeof window === 'undefined';
 
-    this.action = this.action.bind(this);
-    this.clickHandler = this.clickHandler.bind(this);
+		this.action = this.action.bind(this);
+		this.clickHandler = this.clickHandler.bind(this);
 
-    if (!this.ssr) {
-      this.debounced = this.debounce(this.action, props.delay);
-    } else {
-      this.state.text = props.text.substring(0, 20);
-    }
-  }
+		if (!this.ssr) {
+			this.debounced = this.debounce(this.action, props.delay);
+		} else {
+			this.state.text = props.text.substring(0, 20);
+		}
+	}
 
-  componentDidMount() {
-    if (this.props.text && !this.ssr) {
-      this.lineHeight = this.element.clientHeight + 1;
-      this.clampLines();
+	componentDidMount() {
+		if (this.props.text && !this.ssr) {
+			this.lineHeight = this.element.clientHeight + 1;
+			this.clampLines();
 
-      if (this.watch) {
-        window.addEventListener('resize', this.debounced);
-      }
-    }
-  }
+			if (this.watch) {
+				window.addEventListener('resize', this.debounced);
+			}
+		}
+	}
 
-  componentWillUnmount() {
-    if (!this.ssr) {
-      window.removeEventListener('resize', this.debounced);
-    }
-  }
+	componentWillUnmount() {
+		if (!this.ssr) {
+			window.removeEventListener('resize', this.debounced);
+		}
+	}
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.text !== this.props.text) {
-      this.original = this.props.text;
-      this.clampLines();
-    }
-  }
+	componentDidUpdate(prevProps) {
+		if (prevProps.text !== this.props.text) {
+			this.original = this.props.text;
+			this.clampLines();
+		}
+	}
 
-  debounce(func, wait, immediate) {
-    let timeout;
+	debounce(func, wait, immediate) {
+		let timeout;
 
-    return () => {
-      let context = this,
-        args = arguments;
-      let later = () => {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      let callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  }
+		return () => {
+			const context = this,
+				args = arguments;
+			const later = () => {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+			const callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
+	}
 
-  action() {
-    if (this.watch) {
-      this.setState({
-        noClamp: false,
-      });
-      this.clampLines();
-      this.setState({ expanded: !this.state.expanded });
-    }
-  }
+	action() {
+		if (this.watch) {
+			this.setState({
+				noClamp: false,
+			});
+			this.clampLines();
+			this.setState({ expanded: !this.state.expanded });
+		}
+	}
 
-  clampLines() {
-    if (!this.element) return;
+	clampLines() {
+		if (!this.element) return;
 
-    this.setState({
-      text: '',
-    });
+		this.setState({
+			text: '',
+		});
 
-    let maxHeight = this.lineHeight * this.props.lines + 1;
+		const maxHeight = this.lineHeight * this.props.lines + 1;
 
-    this.start = 0;
-    this.middle = 0;
-    this.end = this.original.length;
+		this.start = 0;
+		this.middle = 0;
+		this.end = this.original.length;
 
-    while (this.start <= this.end) {
-      this.middle = Math.floor((this.start + this.end) / 2);
-      this.element.innerText = this.original.slice(0, this.middle);
-      if (this.middle === this.original.length) {
-        this.setState({
-          text: this.original,
-          noClamp: true,
-        });
-        return;
-      }
+		while (this.start <= this.end) {
+			this.middle = Math.floor((this.start + this.end) / 2);
+			this.element.innerText = this.original.slice(0, this.middle);
+			if (this.middle === this.original.length) {
+				this.setState({
+					text: this.original,
+					noClamp: true,
+				});
+				return;
+			}
 
-      this.moveMarkers(maxHeight);
-    }
+			this.moveMarkers(maxHeight);
+		}
 
-    this.element.innerText =
-      this.original.slice(0, this.middle - 5) + this.getEllipsis();
-    this.setState({
-      text: this.original.slice(0, this.middle - 5) + this.getEllipsis(),
-    });
-  }
+		this.element.innerText =
+			this.original.slice(0, this.middle - 5) + this.getEllipsis();
+		this.setState({
+			text: this.original.slice(0, this.middle - 5) + this.getEllipsis(),
+		});
+	}
 
-  moveMarkers(maxHeight) {
-    if (this.element.clientHeight <= maxHeight) {
-      this.start = this.middle + 1;
-    } else {
-      this.end = this.middle - 1;
-    }
-  }
+	moveMarkers(maxHeight) {
+		if (this.element.clientHeight <= maxHeight) {
+			this.start = this.middle + 1;
+		} else {
+			this.end = this.middle - 1;
+		}
+	}
 
-  getClassName() {
-    let className = this.props.className || '';
+	getClassName() {
+		const className = this.props.className || '';
 
-    return `clamp-lines ${className}`;
-  }
+		return `clamp-lines ${className}`;
+	}
 
-  getEllipsis() {
-    return this.watch && !this.state.noClamp ? this.props.ellipsis : '';
-  }
+	getEllipsis() {
+		return this.watch && !this.state.noClamp ? this.props.ellipsis : '';
+	}
 
-  getButton() {
-    if (this.state.noClamp || !this.props.buttons) return;
+	getButton() {
+		if (this.state.noClamp || !this.props.buttons) return;
 
-    let buttonText = this.watch ? this.props.moreText : this.props.lessText;
+		const buttonText = this.watch
+			? this.props.moreText
+			: this.props.lessText;
 
-    return (
-      <button
-        className="clamp-lines__button"
-        onClick={this.clickHandler}
-        aria-controls={`clamped-content-${this.uuid}`}
-        aria-expanded={!this.state.expanded}
-      >
-        {buttonText}
-      </button>
-    );
-  }
+		return (
+			<button
+				className='clamp-lines__button'
+				onClick={this.clickHandler}
+				aria-controls={`clamped-content-${this.uuid}`}
+				aria-expanded={!this.state.expanded}>
+				{buttonText}
+			</button>
+		);
+	}
 
-  clickHandler(e) {
-    const { stopPropagation } = this.props;
+	clickHandler(e) {
+		const { stopPropagation } = this.props;
 
-    e.preventDefault();
-    stopPropagation && e.stopPropagation();
+		e.preventDefault();
+		stopPropagation && e.stopPropagation();
 
-    this.watch = !this.watch;
-    this.watch
-      ? this.clampLines()
-      : this.setState({
-          text: this.original,
-        });
+		this.watch = !this.watch;
+		this.watch
+			? this.clampLines()
+			: this.setState({
+					text: this.original,
+			  });
 
-    this.setState({ expanded: !this.state.expanded });
-  }
+		this.setState({ expanded: !this.state.expanded });
+	}
 
-  render() {
-    if (!this.props.text) {
-      return null;
-    }
+	formatText = function (text) {
+		return text.replace(/(?:\r\n|\r|\n)/g, '<br />');
+	};
 
-    const innerClampElement = React.createElement(this.props.innerElement, { 
-      ref: e => {
-        this.element = e;
-      },
-      id: `clamped-content-${this.uuid}`,
-      'aria-hidden': this.state.expanded,
-    }, this.state.text);
+	render() {
+		if (!this.props.text) {
+			return null;
+		}
+		const innerClampElement =
+			this.props.type == 'html'
+				? React.createElement(this.props.innerElement, {
+						ref: (e) => {
+							this.element = e;
+						},
+						id: `clamped-content-${this.uuid}`,
+						'aria-hidden': this.state.expanded,
+						dangerouslySetInnerHTML: { __html: this.state.text },
+				  })
+				: React.createElement(
+						this.props.innerElement,
+						{
+							ref: (e) => {
+								this.element = e;
+							},
+							id: `clamped-content-${this.uuid}`,
+							'aria-hidden': this.state.expanded,
+						},
+						this.formatText(this.state.text)
+				  );
 
-    return (
-      <div className={this.getClassName()}>
-        {innerClampElement}
-        {this.getButton()}
-      </div>
-    );
-  }
+		return (
+			<div className={this.getClassName()}>
+				{innerClampElement}
+				{this.getButton()}
+			</div>
+		);
+	}
 }
 
 ClampLines.propTypes = {
-  text: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  lines: PropTypes.number,
-  ellipsis: PropTypes.string,
-  buttons: PropTypes.bool,
-  moreText: PropTypes.string,
-  lessText: PropTypes.string,
-  className: PropTypes.string,
-  delay: PropTypes.number,
-  stopPropagation: PropTypes.bool,
-  innerElement: PropTypes.string,
+	text: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
+	type: 'html' | 'text',
+	lines: PropTypes.number,
+	ellipsis: PropTypes.string,
+	buttons: PropTypes.bool,
+	moreText: PropTypes.string,
+	lessText: PropTypes.string,
+	className: PropTypes.string,
+	delay: PropTypes.number,
+	stopPropagation: PropTypes.bool,
+	innerElement: PropTypes.string,
 };
 
 ClampLines.defaultProps = {
-  lines: 3,
-  ellipsis: '...',
-  buttons: true,
-  moreText: 'Read more',
-  lessText: 'Read less',
-  delay: 300,
-  innerElement: 'div'
+	lines: 3,
+	ellipsis: '...',
+	buttons: true,
+	moreText: 'Read more',
+	lessText: 'Read less',
+	delay: 300,
+	innerElement: 'div',
 };
