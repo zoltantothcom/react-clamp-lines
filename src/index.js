@@ -13,6 +13,7 @@ export default class ClampLines extends PureComponent {
     this.middle = 0;
     this.end = 0;
     this.uuid = props.id;
+    this.willUnmount = false;
     this.state = {
       expanded: true,
       noClamp: false,
@@ -44,6 +45,8 @@ export default class ClampLines extends PureComponent {
   }
 
   componentWillUnmount() {
+    this.willUnmount = true;
+
     if (!this.ssr) {
       window.removeEventListener('resize', this.debounced);
     }
@@ -74,7 +77,7 @@ export default class ClampLines extends PureComponent {
   }
 
   action() {
-    if (this.watch) {
+    if (this.watch && !this.willUnmount) {
       this.setState({
         noClamp: false,
       });
